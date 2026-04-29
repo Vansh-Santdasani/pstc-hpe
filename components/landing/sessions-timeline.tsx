@@ -54,10 +54,10 @@ const SESSIONS: Session[] = [
     status: "upcoming",
     date: "30 Apr 2026",
     isoDate: "2026-04-30",
-    title: "Quantum-Safe Security & Next-Gen Cybersecurity",
-    speakers: "Workshop · 60 min · All Teams",
+    title: "Quantum Securities",
+    speakers: "Vansh Santdasani · Workshop · 60 min · All Teams",
     blurb:
-      "Hands-on workshop on HPE Gen12 quantum-safe security. Run real post-quantum encryption code, build attack chains in CyberBlocks, and map every step to MITRE ATT&CK.",
+      "Hands-on workshop on HPE Gen12 quantum-safe security. Understand real post-quantum encryption, build attack chains in CyberBlocks, and map every step to MITRE ATT&CK.",
     icon: Atom,
     cta: { label: "Register Now", href: "#register" },
     highlight: true,

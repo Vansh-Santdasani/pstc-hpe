@@ -104,7 +104,7 @@ export function RegisterForm() {
               ◆ Next Session
             </div>
             <h3 className="font-display text-2xl font-semibold text-fg leading-tight">
-              Quantum-Safe Security & Next-Gen Cybersecurity
+              Quantum Securities
             </h3>
             <p className="mt-3 font-mono text-xs uppercase tracking-wider text-fg-muted">
               HPE Gen12 · CyberBlocks · MITRE ATT&CK
@@ -112,8 +112,8 @@ export function RegisterForm() {
 
             <ul className="mt-6 space-y-3">
               <Detail icon={Calendar} label="Date" value="30 April 2026 (Thursday)" />
-              <Detail icon={Clock} label="Time" value="60 minutes · slot TBD" />
-              <Detail icon={MapPin} label="Venue" value="HPE Pune · TBD" />
+              <Detail icon={Clock} label="Time" value="60 minutes · 17:00 - 18:00 hours" />
+              <Detail icon={MapPin} label="Venue" value="HPE Pune · Sindhudurg Training Room, 5th floor" />
               <Detail
                 icon={Sparkles}
                 label="Format"
