@@ -1,0 +1,209 @@
+@import "tailwindcss";
+
+/* ============================================================
+   THEME TOKENS — Tailwind v4 @theme directive
+   These become utility classes automatically (e.g. bg-obsidian)
+   ============================================================ */
+@theme {
+  /* Backgrounds — obsidian black, NOT navy */
+  --color-obsidian: #0a0e0f;
+  --color-obsidian-2: #11161a;
+  --color-obsidian-3: #1a2125;
+  --color-obsidian-line: #232b30;
+
+  /* HPE green family — primary identity */
+  --color-hpe: #01a982;
+  --color-hpe-bright: #00ffb2;
+  --color-hpe-dim: #017a5c;
+  --color-hpe-glow: #01a98233;
+
+  /* Accents */
+  --color-amber: #ffb000;
+  --color-amber-glow: #ffb00033;
+  --color-crimson: #ff003c;
+  --color-crimson-glow: #ff003c33;
+  --color-cyan: #00d4ff;
+
+  /* Text */
+  --color-fg: #e8f0ec;
+  --color-fg-muted: #8a9b96;
+  --color-fg-dim: #4f5d59;
+
+  /* Fonts */
+  --font-display: "Bricolage Grotesque", "Helvetica Neue", sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, "SF Mono", Menlo, monospace;
+}
+
+/* ============================================================
+   GLOBAL RESETS + DEFAULTS
+   ============================================================ */
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  background: var(--color-obsidian);
+  color: var(--color-fg);
+  font-family: var(--font-display);
+  font-feature-settings: "ss01", "ss02", "cv11";
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+/* Selection */
+::selection {
+  background: var(--color-hpe);
+  color: var(--color-obsidian);
+}
+
+/* Scrollbars */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+::-webkit-scrollbar-track {
+  background: var(--color-obsidian-2);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--color-obsidian-line);
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-hpe-dim);
+}
+
+/* ============================================================
+   UTILITY CLASSES — composed effects we use a lot
+   ============================================================ */
+
+/* Subtle CRT scanlines */
+.scanlines::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(
+    0deg,
+    transparent 0,
+    transparent 2px,
+    rgba(0, 255, 178, 0.025) 2px,
+    rgba(0, 255, 178, 0.025) 3px
+  );
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* Grid backdrop */
+.bg-grid {
+  background-image:
+    linear-gradient(to right, rgba(1, 169, 130, 0.06) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(1, 169, 130, 0.06) 1px, transparent 1px);
+  background-size: 56px 56px;
+}
+
+.bg-grid-fine {
+  background-image:
+    linear-gradient(to right, rgba(232, 240, 236, 0.04) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(232, 240, 236, 0.04) 1px, transparent 1px);
+  background-size: 24px 24px;
+}
+
+/* Radial vignette overlay */
+.vignette {
+  background: radial-gradient(
+    ellipse at center,
+    transparent 0%,
+    transparent 50%,
+    rgba(10, 14, 15, 0.6) 100%
+  );
+}
+
+/* Glow effects */
+.glow-hpe {
+  box-shadow: 0 0 24px var(--color-hpe-glow), 0 0 1px var(--color-hpe);
+}
+.glow-amber {
+  box-shadow: 0 0 24px var(--color-amber-glow), 0 0 1px var(--color-amber);
+}
+.glow-crimson {
+  box-shadow: 0 0 32px var(--color-crimson-glow), 0 0 1px var(--color-crimson);
+}
+
+.text-glow-hpe {
+  text-shadow: 0 0 12px var(--color-hpe-glow);
+}
+
+/* Terminal cursor */
+@keyframes blink {
+  0%, 49% { opacity: 1; }
+  50%, 100% { opacity: 0; }
+}
+.cursor-blink {
+  animation: blink 1s step-end infinite;
+}
+
+/* Siren pulse */
+@keyframes siren-pulse {
+  0%, 100% { background-color: rgba(255, 0, 60, 0); }
+  50% { background-color: rgba(255, 0, 60, 0.18); }
+}
+.siren-active {
+  animation: siren-pulse 0.6s ease-in-out infinite;
+}
+
+/* Subtle drift for ambient elements */
+@keyframes drift {
+  0%, 100% { transform: translate3d(0, 0, 0); }
+  50% { transform: translate3d(0, -8px, 0); }
+}
+.drift {
+  animation: drift 6s ease-in-out infinite;
+}
+
+/* Glitch on hover (used sparingly) */
+@keyframes glitch-x {
+  0%, 100% { transform: translateX(0); }
+  20% { transform: translateX(-2px); }
+  40% { transform: translateX(2px); }
+  60% { transform: translateX(-1px); }
+  80% { transform: translateX(1px); }
+}
+.glitch-on-hover:hover {
+  animation: glitch-x 0.3s linear;
+}
+
+/* Quantum clock ring rotation */
+@keyframes ring-spin {
+  to { transform: rotate(360deg); }
+}
+.ring-spin {
+  animation: ring-spin 30s linear infinite;
+}
+
+/* Stagger reveal */
+@keyframes fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.fade-up {
+  animation: fade-up 0.6s ease-out backwards;
+}
+
+/* No-select for drag UI */
+.no-select {
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+/* Focus ring for accessibility */
+.focus-ring:focus-visible {
+  outline: 2px solid var(--color-hpe-bright);
+  outline-offset: 2px;
+}
