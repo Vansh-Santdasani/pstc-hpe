@@ -35,7 +35,7 @@ export function Hud({
   const lives = useGameStore((s) => s.livesRemaining);
   const hintsUsed = useGameStore((s) => s.hintsUsed);
   const bestScores = useGameStore((s) => s.bestScores);
-  const useHint = useGameStore((s) => s.useHint);
+  const getHint = useGameStore((s) => s.useHint);
   const status = useGameStore((s) => s.status);
   const hardReset = useGameStore((s) => s.hardReset);
 
@@ -64,7 +64,7 @@ export function Hud({
       return;
     }
     audio.click();
-    const hint = useHint();
+    const hint = getHint();
     const remainingAfter = remainingBefore - 1;
     onShowHint(hint, remainingAfter);
   };
